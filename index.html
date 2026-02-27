@@ -2,106 +2,265 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anjali ❤️ D'Angelo</title>
 
 <style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-    font-family: 'Segoe UI', sans-serif;
-    overflow:hidden;
-    text-align:center;
-    color:white;
+* {
+    box-sizing: border-box;
 }
 
-h1{font-size:3rem; margin-bottom:10px;}
-p{max-width:500px; font-size:1.2rem;}
-
-button{
-    padding:15px 30px;
-    margin:15px;
-    border:none;
-    border-radius:30px;
-    font-size:1.2rem;
-    cursor:pointer;
-    transition:0.3s;
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    text-align: center;
+    color: white;
+    padding: 20px;
 }
 
-#yes{background:#ff4d6d; color:white;}
-#no{background:white; color:#ff4d6d; position:absolute;}
-
-.heart{
-    position:absolute;
-    color:white;
-    animation: float 6s linear infinite;
+.container {
+    max-width: 600px;
+    z-index: 10;
 }
 
-@keyframes float{
-    0%{transform:translateY(100vh) scale(0);}
-    100%{transform:translateY(-10vh) scale(1.5);}
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 20px 0;
+}
+
+p {
+    max-width: 500px;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    line-height: 1.6;
+    margin: 20px auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    position: relative;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#yes {
+    background: #ff4d6d;
+    color: white;
+    position: relative;
+}
+
+#yes:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
+}
+
+#yes:active {
+    transform: scale(0.98);
+}
+
+#no {
+    background: white;
+    color: #ff4d6d;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#no:hover {
+    background: #fff0f3;
+}
+
+.heart {
+    position: fixed;
+    color: white;
+    pointer-events: none;
+    animation: float 6s linear forwards;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+#audio-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+#audio-button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.success-message {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .button-container {
+        gap: 10px;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    #no {
+        position: relative;
+        transform: none;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<h1>Anjali 💕</h1>
+<button id="audio-button">🔊 Play Music</button>
 
-<p>
-I don’t even know where to start…  
-I just know I miss you more than words can explain.  
-The little moments, the laughs, your presence — everything.  
+<div class="container">
+    <h1>Anjali 💕</h1>
 
-Somehow life feels softer when you’re around,  
-and emptier when you’re not.  
+    <p>
+        I don't even know where to start…<br>
+        I just know I miss you more than words can explain.<br>
+        The little moments, the laughs, your presence — everything.<br>
+        <br>
+        Somehow life feels softer when you're around,<br>
+        and emptier when you're not.<br>
+        <br>
+        So instead of overthinking…<br>
+        I just want to ask you something simple.
+    </p>
 
-So instead of overthinking…  
-I just want to ask you something simple.
-</p>
+    <h1>Will you be mine? 🥺</h1>
 
-<h1>Will you be mine? 🥺</h1>
+    <div class="button-container">
+        <button id="yes" aria-label="Yes button">YES 💖</button>
+        <button id="no" aria-label="No button">NO 😜</button>
+    </div>
+</div>
 
-<button id="yes" onclick="yesClicked()">YES 💖</button>
-<button id="no">NO 😜</button>
-
-<audio autoplay loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b0b1a4a3.mp3" type="audio/mpeg">
+<audio id="background-audio">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b0b1a4a3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
 </audio>
 
 <script>
-const noBtn = document.getElementById("no");
+// Audio handling
+const audioElement = document.getElementById('background-audio');
+const audioButton = document.getElementById('audio-button');
+let isAudioPlaying = false;
 
-noBtn.addEventListener("mouseover",()=>{
-    noBtn.style.top = Math.random()*80+"vh";
-    noBtn.style.left = Math.random()*80+"vw";
+audioButton.addEventListener('click', () => {
+    if (isAudioPlaying) {
+        audioElement.pause();
+        audioButton.textContent = '🔊 Play Music';
+        isAudioPlaying = false;
+    } else {
+        audioElement.play().catch(() => {
+            console.log('Audio playback failed - browser may have blocked autoplay');
+        });
+        audioButton.textContent = '🔇 Stop Music';
+        isAudioPlaying = true;
+    }
 });
 
-function yesClicked(){
-    document.body.innerHTML = `
-        <h1>I knew it 😭💖</h1>
-        <p>
-        You just made D'Angelo the happiest person alive.  
-        I promise to cherish you, laugh with you, annoy you,  
-        and love you in the softest way possible.
-        </p>
-        <h1>Our story starts now ✨</h1>
+// NO button event listener
+const noBtn = document.getElementById('no');
+
+noBtn.addEventListener('mouseover', () => {
+    const randomTop = Math.random() * 60 + 20;
+    const randomLeft = Math.random() * 60 + 20;
+    noBtn.style.top = randomTop + '%';
+    noBtn.style.left = randomLeft + '%';
+    noBtn.style.transition = 'top 0.2s, left 0.2s';
+});
+
+// YES button event listener
+document.getElementById('yes').addEventListener('click', yesClicked);
+
+function yesClicked() {
+    const container = document.querySelector('.container');
+    container.innerHTML = `
+        <div class="success-message">
+            <h1>I knew it 😭💖</h1>
+            <p>
+                You just made D'Angelo the happiest person alive.<br>
+                I promise to cherish you, laugh with you, annoy you,<br>
+                and love you in the softest way possible.
+            </p>
+            <h1>Our story starts now ✨</h1>
+        </div>
     `;
 }
 
-setInterval(()=>{
-    const heart = document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💖";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(Math.random()*20+10)+"px";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),6000);
-},300);
+// Floating hearts animation
+let heartCount = 0;
+const maxHearts = 50;
+
+setInterval(() => {
+    if (heartCount < maxHearts) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+        document.body.appendChild(heart);
+        heartCount++;
+
+        setTimeout(() => {
+            heart.remove();
+            heartCount--;
+        }, 6000);
+    }
+}, 300);
 </script>
 
 </body>
