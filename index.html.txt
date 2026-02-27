@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anjali ❤️ D'Angelo</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    font-family: 'Segoe UI', sans-serif;
+    overflow:hidden;
+    text-align:center;
+    color:white;
+}
+
+h1{font-size:3rem; margin-bottom:10px;}
+p{max-width:500px; font-size:1.2rem;}
+
+button{
+    padding:15px 30px;
+    margin:15px;
+    border:none;
+    border-radius:30px;
+    font-size:1.2rem;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#yes{background:#ff4d6d; color:white;}
+#no{background:white; color:#ff4d6d; position:absolute;}
+
+.heart{
+    position:absolute;
+    color:white;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh) scale(0);}
+    100%{transform:translateY(-10vh) scale(1.5);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Anjali 💕</h1>
+
+<p>
+I don’t even know where to start…  
+I just know I miss you more than words can explain.  
+The little moments, the laughs, your presence — everything.  
+
+Somehow life feels softer when you’re around,  
+and emptier when you’re not.  
+
+So instead of overthinking…  
+I just want to ask you something simple.
+</p>
+
+<h1>Will you be mine? 🥺</h1>
+
+<button id="yes" onclick="yesClicked()">YES 💖</button>
+<button id="no">NO 😜</button>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b0b1a4a3.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover",()=>{
+    noBtn.style.top = Math.random()*80+"vh";
+    noBtn.style.left = Math.random()*80+"vw";
+});
+
+function yesClicked(){
+    document.body.innerHTML = `
+        <h1>I knew it 😭💖</h1>
+        <p>
+        You just made D'Angelo the happiest person alive.  
+        I promise to cherish you, laugh with you, annoy you,  
+        and love you in the softest way possible.
+        </p>
+        <h1>Our story starts now ✨</h1>
+    `;
+}
+
+setInterval(()=>{
+    const heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+10)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
